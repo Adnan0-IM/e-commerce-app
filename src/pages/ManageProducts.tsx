@@ -106,14 +106,26 @@ const ManageProducts: React.FC = () => {
     try {
       let imageUrl = formData.image;
 
+      // If we're editing and there's an existing image preview but no new image
+      if (editingProduct && imagePreview && !formData.imageFile && !formData.image) {
+        imageUrl = editingProduct.image;
+      }
       // If there's a file, convert it to base64
-      if (formData.imageFile) {
+      else if (formData.imageFile) {
         const base64 = await new Promise<string>((resolve) => {
           const reader = new FileReader();
           reader.onloadend = () => resolve(reader.result as string);
           reader.readAsDataURL(formData.imageFile as File);
         });
         imageUrl = base64;
+      }
+      // If there's no file but there's a URL
+      else if (formData.image) {
+        imageUrl = formData.image;
+      }
+      // If there's neither file nor URL but there's a preview
+      else if (imagePreview) {
+        imageUrl = imagePreview;
       }
 
       if (editingProduct) {
@@ -202,7 +214,7 @@ const ManageProducts: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="container mx-auto px-4   py-8">
         {/* Header with Stats */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
@@ -495,11 +507,11 @@ const ManageProducts: React.FC = () => {
                         <div className="flex-grow border-t border-gray-300 dark:border-gray-600"></div>
                       </div>
                       <input
-                        type="url"
+                        type="text"
                         name="image"
                         value={formData.image}
                         onChange={handleInputChange}
-                        placeholder="Enter image URL"
+                        placeholder="Enter image URL (leave empty if using file upload)"
                         className="w-full px-4 py-2 mt-4 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                       />
                     </div>

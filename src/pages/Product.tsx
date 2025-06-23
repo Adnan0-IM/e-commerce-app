@@ -63,6 +63,7 @@ const ProductPage: React.FC = () => {
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
+        theme: "light",
       });
     } else {
       toast.error('Sorry, this item is out of stock!', {
@@ -72,6 +73,7 @@ const ProductPage: React.FC = () => {
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
+        theme: "light",
       });
     }
   };

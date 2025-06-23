@@ -53,20 +53,7 @@ const Cart: React.FC = () => {
     fetchProducts();
   }, [cart]);
 
-  const handleUpdateQuantity = (productId: string, newQuantity: number) => {
-    if (newQuantity < 1) {
-      removeFromCart(productId);
-    } else {
-      const product = products.find(p => p.id === productId);
-      if (product && newQuantity <= (product.stock || 10)) {
-        addToCart(productId, newQuantity - (cart.find(item => item.id === productId)?.quantity || 0));
-      }
-    }
-  };
 
-  const handleRemove = (productId: string) => {
-    removeFromCart(productId);
-  };
 
   const calculateSubtotal = (items: CartProduct[]): number => {
     return items.reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -161,7 +148,7 @@ const Cart: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 ">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Shopping Cart</h1>
           <button
