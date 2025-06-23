@@ -7,6 +7,7 @@ import { useCart } from '../context/CartContext';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 const Home: React.FC = () => {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
@@ -73,9 +74,11 @@ const Home: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      {/* Hero Section with improved responsive design */}
-      <div className="relative bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 text-white">
-        <div className="absolute inset-0 overflow-hidden">
+      {/* Hero Section with enhanced design */}
+      <div className="relative bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 text-white overflow-hidden">
+        {/* Animated background patterns */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-black opacity-20"></div>
           <svg
             className="absolute left-0 top-0 w-full h-full opacity-10 pointer-events-none"
             viewBox="0 0 800 400"
@@ -85,9 +88,10 @@ const Home: React.FC = () => {
             <circle cx="200" cy="200" r="200" fill="#fff" />
             <circle cx="700" cy="100" r="120" fill="#fff" />
           </svg>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20"></div>
         </div>
         
-        <div className="relative container mx-auto px-4 py-16 md:py-24">
+        <div className="relative container mx-auto px-4 py-20 md:py-32">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12">
             <div className="flex-1 text-center md:text-left max-w-2xl">
               <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
@@ -130,10 +134,10 @@ const Home: React.FC = () => {
             {/* Hero image with animation */}
             <div className="hidden md:block flex-1 transform hover:scale-105 transition-transform duration-500">
               <img
-                src="https://images.unsplash.com/photo-1515168833906-d2a3b82b3029?auto=format&fit=crop&w=600&q=80"
-                alt="Shopping illustration"
-                className="w-full max-w-md mx-auto rounded-2xl shadow-2xl border-4 border-white/30 hover:border-white/50 transition-colors"
-                loading="lazy"
+              src='/vite.svg'
+              alt="Shopping illustration"
+              className="w-full max-w-xs mx-auto rounded-2xl shadow-2xl border-4 border-white/30 hover:border-white/50 transition-colors"
+              loading="lazy"
               />
             </div>
           </div>
@@ -143,17 +147,22 @@ const Home: React.FC = () => {
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12 space-y-16">
         {/* Featured Products Section */}
-        <section className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
+        <section className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
-              Featured Products
-            </h2>
+            <div className="flex items-center">
+              <svg className="w-8 h-8 mr-3 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+              </svg>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+                Featured Products
+              </h2>
+            </div>
             <Link
               to="/products"
-              className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 flex items-center gap-2 hover:gap-3 transition-all"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-all group"
             >
               View All 
-              <span aria-hidden="true">→</span>
+              <span aria-hidden="true" className="transform group-hover:translate-x-1 transition-transform">→</span>
             </Link>
           </div>
 
@@ -182,8 +191,11 @@ const Home: React.FC = () => {
         </section>
 
         {/* Categories Section */}
-        <section className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8">
+        <section className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+            <svg className="w-8 h-8 mr-3 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+            </svg>
             Shop by Category
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -191,9 +203,10 @@ const Home: React.FC = () => {
               <button
                 key={category}
                 onClick={() => handleCategoryClick(category)}
-                className="p-6 text-center bg-gray-50 dark:bg-gray-700 rounded-xl shadow-md hover:shadow-xl transition-all transform hover:scale-105"
+                className="group p-6 text-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all transform hover:scale-105 relative overflow-hidden"
               >
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/0 via-blue-600/0 to-purple-600/0 group-hover:from-blue-600/10 group-hover:via-blue-600/10 group-hover:to-purple-600/10 transition-colors duration-300"></div>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white relative z-10">
                   {category}
                 </h3>
               </button>

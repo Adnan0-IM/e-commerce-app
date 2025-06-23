@@ -11,7 +11,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
   children,
   requireAdmin = false,
 }) => {
-  const { user, isAuthenticated, isAdmin } = useAuth();
+  const { isAuthenticated, isAdmin } = useAuth();
 
   // Not logged in at all
   if (!isAuthenticated) {

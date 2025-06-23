@@ -17,12 +17,12 @@ const CartItem: React.FC<CartItemProps> = ({ item, onQuantityChange, onRemove })
           className="w-16 h-16 object-cover rounded"
         />
         <div>
-          <h3 className="font-semibold">{item.name}</h3>
-          <p className="text-gray-600">${item.price.toFixed(2)}</p>
+          <h3 className="font-semibold dark:text-white">{item.name}</h3>
+          <p className="text-gray-600 dark:text-gray-100">${item.price.toFixed(2)}</p>
         </div>
       </div>
       <div className="flex items-center space-x-4">
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 dark:text-gray-100">
           <button
             onClick={() => onQuantityChange(item.quantity - 1)}
             className="px-2 py-1 border rounded"

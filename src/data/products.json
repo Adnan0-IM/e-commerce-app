@@ -4,7 +4,7 @@
     "name": "iPhone 14 Pro",
     "price": 999.99,
     "description": "Latest iPhone with dynamic island, 48MP camera, and A16 Bionic chip",
-    "image": "https://images.unsplash.com/photo-1678685888221-cda773a3dcdb",
+    "image": "/src/assets/images/iphone.jpg",
     "category": "Electronics",
     "stock": 25,
     "createdAt": "2025-06-01T10:00:00Z"
@@ -14,7 +14,7 @@
     "name": "MacBook Air M2",
     "price": 1299.99,
     "description": "Ultra-thin laptop with M2 chip, 13.6-inch Liquid Retina display",
-    "image": "https://images.unsplash.com/photo-1637114612755-308c1e848325",
+    "image": "/src/assets/images/macbook-air.jpg",
     "category": "Electronics",
     "stock": 15,
     "createdAt": "2025-06-02T11:00:00Z"
@@ -24,7 +24,7 @@
     "name": "Nike Air Max 270",
     "price": 150.00,
     "description": "Comfortable running shoes with Air Max cushioning",
-    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+    "image": "/src/assets/images/nike.jpg",
     "category": "Fashion",
     "stock": 50,
     "createdAt": "2025-06-03T12:00:00Z"
@@ -34,7 +34,7 @@
     "name": "Levi's 501 Original Jeans",
     "price": 69.99,
     "description": "Classic straight fit jeans in dark wash",
-    "image": "https://images.unsplash.com/photo-1542272604-787c3835535d",
+    "image": "/src/assets/images/jeans.jpg",
     "category": "Fashion",
     "stock": 100,
     "createdAt": "2025-06-04T13:00:00Z"
@@ -44,7 +44,7 @@
     "name": "PS5 Digital Edition",
     "price": 399.99,
     "description": "Next-gen gaming console with ultra-high speed SSD",
-    "image": "https://images.unsplash.com/photo-1606813907291-d86efa9b94db",
+    "image": "/src/assets/images/ps5.jpg",
     "category": "Gaming",
     "stock": 10,
     "createdAt": "2025-06-05T14:00:00Z"
@@ -54,7 +54,7 @@
     "name": "Xbox Series X",
     "price": 499.99,
     "description": "Most powerful Xbox console with 4K gaming",
-    "image": "https://images.unsplash.com/photo-1621259182978-fbf93132d53d",
+    "image": "/src/assets/images/xbox.jpg",
     "category": "Gaming",
     "stock": 12,
     "createdAt": "2025-06-06T15:00:00Z"
@@ -64,7 +64,7 @@
     "name": "Coffee Maker Deluxe",
     "price": 129.99,
     "description": "Programmable coffee maker with 12-cup capacity",
-    "image": "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6",
+    "image": "/src/assets/images/coffee.jpg",
     "category": "Home & Kitchen",
     "stock": 30,
     "createdAt": "2025-06-07T16:00:00Z"
@@ -74,7 +74,7 @@
     "name": "Stand Mixer Pro",
     "price": 279.99,
     "description": "Professional grade stand mixer with 5qt bowl",
-    "image": "https://images.unsplash.com/photo-1594228041126-50acbd3d14c6",
+    "image": "/src/assets/images/stand-mixer.webp",
     "category": "Home & Kitchen",
     "stock": 20,
     "createdAt": "2025-06-08T17:00:00Z"
@@ -84,7 +84,7 @@
     "name": "Yoga Mat Premium",
     "price": 49.99,
     "description": "Extra thick eco-friendly yoga mat with carrying strap",
-    "image": "https://images.unsplash.com/photo-1593810450967-f9c42742e326",
+    "image": "/src/assets/images/yogamat.jpg",
     "category": "Sports & Fitness",
     "stock": 75,
     "createdAt": "2025-06-09T18:00:00Z"
@@ -94,7 +94,7 @@
     "name": "Dumbbells Set 5-25lbs",
     "price": 299.99,
     "description": "Complete set of rubber-coated dumbbells with rack",
-    "image": "https://images.unsplash.com/photo-1586401100295-7a8096fd231a",
+    "image": "/src/assets/images/dumbbells.jpg",
     "category": "Sports & Fitness",
     "stock": 15,
     "createdAt": "2025-06-10T19:00:00Z"
@@ -104,7 +104,7 @@
     "name": "Smart LED TV 65\"",
     "price": 799.99,
     "description": "4K Ultra HD Smart LED TV with HDR",
-    "image": "https://images.unsplash.com/photo-1593784991095-a205069470b6",
+    "image": "/src/assets/images/smart-tv.jpg",
     "category": "Electronics",
     "stock": 8,
     "createdAt": "2025-06-11T20:00:00Z"
@@ -114,7 +114,7 @@
     "name": "Wireless Earbuds Pro",
     "price": 199.99,
     "description": "True wireless earbuds with active noise cancellation",
-    "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
+    "image": "/src/assets/images/earbuds.jpg",
     "category": "Electronics",
     "stock": 45,
     "createdAt": "2025-06-12T21:00:00Z"
@@ -124,7 +124,7 @@
     "name": "Designer Handbag",
     "price": 399.99,
     "description": "Luxury leather handbag with gold-tone hardware",
-    "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3",
+    "image": "/src/assets/images/handbag.jpg",
     "category": "Fashion",
     "stock": 25,
     "createdAt": "2025-06-13T22:00:00Z"
@@ -134,7 +134,7 @@
     "name": "Robot Vacuum Cleaner",
     "price": 299.99,
     "description": "Smart robot vacuum with mapping technology",
-    "image": "https://images.unsplash.com/photo-1618339090687-5e435c5baf7e",
+    "image": "/src/assets/images/robot-vacuum.jpeg",
     "category": "Home & Kitchen",
     "stock": 18,
     "createdAt": "2025-06-14T23:00:00Z"
@@ -144,7 +144,7 @@
     "name": "Gaming Chair",
     "price": 249.99,
     "description": "Ergonomic gaming chair with lumbar support",
-    "image": "https://images.unsplash.com/photo-1598550476439-6847785fcea6",
+    "image": "/src/assets/images/gaming-chair.jpg",
     "category": "Gaming",
     "stock": 22,
     "createdAt": "2025-06-15T00:00:00Z"

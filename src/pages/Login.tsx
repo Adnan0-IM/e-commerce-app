@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import AuthLayout from "../components/AuthLayout";
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -54,50 +55,80 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-950">
-      <div className="max-w-md mx-auto p-6 bg-white dark:bg-gray-900 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-          Login
-        </h2>
-
-        {error && (
-          <div className="mb-4 p-3 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-200 rounded-md">
-            {error}
+    <AuthLayout title="Welcome Back">
+      {error && (
+        <div className="bg-red-50 dark:bg-red-900/50 border-l-4 border-red-500 p-4 mb-6 rounded">
+          <p className="text-red-700 dark:text-red-200">{error}</p>
+        </div>
+      )}
+      
+      <form onSubmit={handleLogin} className="space-y-6">
+        <div>
+          <label htmlFor="username" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            Username
+          </label>
+          <div className="mt-1">
+            <input
+              id="username"
+              type="text"
+              required
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+              placeholder="Enter your username"
+            />
           </div>
-        )}
-        <form onSubmit={handleLogin} className="space-y-4">
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-2 border rounded"
-          />
+        </div>
+
+        <div>
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+            Password
+          </label>
+          <div className="mt-1">
+            <input
+              id="password"
+              type="password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="appearance-none block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"
+              placeholder="Enter your password"
+            />
+          </div>
+        </div>
+
+        <div>
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white p-2 rounded"
+            className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
           >
-            Login
+            Sign in
           </button>
-        </form>
-        <div className="mt-4 text-sm text-gray-600 dark:text-gray-300">
-          Don't have an account?{" "}
-          <a
-            href="/signup"
-            className="text-blue-600 dark:text-blue-400 underline"
+        </div>
+      </form>
+
+      <div className="mt-6">
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
+          </div>
+          <div className="relative flex justify-center text-sm">
+            <span className="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400">
+              New to our platform?
+            </span>
+          </div>
+        </div>
+
+        <div className="mt-6">
+          <Link
+            to="/signup"
+            className="w-full flex justify-center py-3 px-4 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors"
           >
-            Sign Up
-          </a>
+            Create an account
+          </Link>
         </div>
       </div>
-    </div>
+    </AuthLayout>
   );
 };
 

@@ -201,28 +201,66 @@ const ManageProducts: React.FC = () => {
   );
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
-      {/* Header */}
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Manage Products</h1>
-        <button
-          onClick={() => handleOpenModal()}
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-        >
-          Add New Product
-        </button>
-      </div>
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Header with Stats */}
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Manage Products</h1>
+              <p className="text-gray-600 dark:text-gray-400">
+                Add, edit, and manage your product inventory
+              </p>
+            </div>
+            <button
+              onClick={() => handleOpenModal()}
+              className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all transform hover:scale-105 shadow-md"
+            >
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+              Add New Product
+            </button>
+          </div>
 
-      {/* Search Bar */}
-      <div className="mb-6">
-        <input
-          type="text"
-          placeholder="Search products..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-        />
-      </div>
+          {/* Quick Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+              <p className="text-sm text-blue-600 dark:text-blue-400 mb-1">Total Products</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">{products.length}</p>
+            </div>
+            <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4">
+              <p className="text-sm text-green-600 dark:text-green-400 mb-1">In Stock</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                {products.filter(p => (p.stock || 0) > 0).length}
+              </p>
+            </div>
+            <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-4">
+              <p className="text-sm text-red-600 dark:text-red-400 mb-1">Out of Stock</p>
+              <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                {products.filter(p => !p.stock || p.stock === 0).length}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Search and Filter Bar */}
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 mb-6">
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex-1 relative">
+              <svg className="w-5 h-5 absolute left-3 top-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <input
+                type="text"
+                placeholder="Search by name, category, or description..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+              />
+            </div>
+          </div>
+        </div>
 
       {/* Products Table */}
       {loading ? (
@@ -488,6 +526,7 @@ const ManageProducts: React.FC = () => {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 };
