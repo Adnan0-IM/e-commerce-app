@@ -21,7 +21,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
   price,
   image,
   isAdmin = false,
-  isAuthenticated = false,
   onAddToCart,
 }) => (
   <div className="bg-white dark:bg-gray-900 rounded-lg shadow-md overflow-hidden">

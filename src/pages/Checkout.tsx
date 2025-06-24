@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import type { Product, Order, OrderItem } from '../shared/types';
+import type { Product, Order } from '../shared/types';
 
 interface CartProduct extends Product {
   quantity: number;

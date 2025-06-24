@@ -68,8 +68,8 @@ const Layout: React.FC = () => {
                 <>
                   {/* Admin links */}
                   <Link to="/admin" className="nav-link">Dashboard</Link>
-                  <Link to="/admin/products" className="nav-link">Manage Products</Link>
-                  <Link to="/admin/orders" className="nav-link">Manage Orders</Link>
+                  <Link to="/admin/products" className="nav-link">Products</Link>
+                  <Link to="/admin/orders" className="nav-link">Orders</Link>
                   <button onClick={handleLogout} className="nav-link">Logout</button>
                 </>
               )}
