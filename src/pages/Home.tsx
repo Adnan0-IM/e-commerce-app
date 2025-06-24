@@ -134,7 +134,7 @@ const Home: React.FC = () => {
             {/* Hero image with animation */}
             <div className="hidden md:block flex-1 transform hover:scale-105 transition-transform duration-500">
               <img
-              src='/vite.svg'
+              src='/shopping.webp'
               alt="Shopping illustration"
               className="w-full max-w-xs mx-auto rounded-2xl shadow-2xl border-4 border-white/30 hover:border-white/50 transition-colors"
               loading="lazy"
