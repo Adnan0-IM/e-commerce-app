@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import type { Product } from '../shared/types';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
+import { toast, ToastContainer } from 'react-toastify';
 
 const ProductDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -45,6 +46,15 @@ const ProductDetails: React.FC = () => {
   const handleAddToCart = () => {
     if (product) {
       addToCart(product.id, quantity);
+      toast.success(`${product.name} added to cart`, {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -62,6 +72,7 @@ const ProductDetails: React.FC = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+       <ToastContainer/>
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Product Image */}

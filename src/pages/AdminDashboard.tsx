@@ -108,16 +108,14 @@ const AdminDashboard: React.FC = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Admin Dashboard</h1>
-          <div className="flex space-x-4">
-            <Link
-              to="/admin/products"
-              className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-              </svg>
-              Add Product
-            </Link>
+          <div className="sm:flex space-x-4 hidden ">
+     
+        <Link to="/admin/orders" className=" bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+         Manage Orders
+        </Link>
+        <Link to="/admin/products" className=" bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+          Manage Products
+        </Link>
           </div>
         </div>
       
@@ -299,15 +297,7 @@ const AdminDashboard: React.FC = () => {
         </div>
       </div>
 
-      {/* Quick Links */}
-      <div className="mt-8 space-x-4">
-        <Link to="/admin/orders" className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-          View All Orders
-        </Link>
-        <Link to="/admin/products" className="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-          Manage Products
-        </Link>
-      </div>
+      
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import NairaIcon from '../assets/images/nigeria-naira-icon.svg';
 
 export interface ProductCardProps {
   id: string;
