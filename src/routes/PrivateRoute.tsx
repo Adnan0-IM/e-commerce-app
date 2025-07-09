@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 interface PrivateRouteProps {
@@ -12,10 +12,10 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({
   requireAdmin = false,
 }) => {
   const { isAuthenticated, isAdmin } = useAuth();
-
+const location = useLocation();
   // Not logged in at all
   if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/login" state={{ from: location.pathname }} replace />;
   }
 
   // Trying to access admin route without admin privileges

@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import CartItem from '../components/CartItem';
 import type { Product } from '../shared/types';
+import { useAuth } from '../context/AuthContext';
+
 
 interface CartProduct extends Product {
   quantity: number;
@@ -15,6 +17,7 @@ const Cart: React.FC = () => {
   const [products, setProducts] = useState<CartProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { user } = useAuth();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -130,7 +133,8 @@ const Cart: React.FC = () => {
           <p className="text-gray-600 dark:text-gray-400 mb-8">
             Looks like you haven't added anything to your cart yet.
           </p>
-          <button
+        <div className="flex gap-4 justify-center">
+            <button
             onClick={() => navigate('/products')}
             className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
@@ -139,6 +143,16 @@ const Cart: React.FC = () => {
             </svg>
             Start Shopping
           </button>
+             <button
+   onClick={() => navigate('/my-orders')}
+    className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+  >
+    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+    </svg>
+    Track My Orders
+  </button>
+        </div>
         </div>
       </div>
     );
@@ -149,18 +163,30 @@ const Cart: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
       <div className="container mx-auto px-4 ">
+       
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Shopping Cart</h1>
-          <button
-            onClick={() => navigate('/products')}
-            className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 flex items-center"
-          >
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 17l-5-5m0 0l5-5m-5 5h12" />
-            </svg>
-            Continue Shopping
-          </button>
-        </div>
+  <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Shopping Cart</h1>
+  <div className="flex items-center gap-4">
+    <button
+      onClick={() => navigate('/products')}
+      className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 flex items-center"
+    >
+      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+      </svg>
+      Continue Shopping
+    </button>
+    <button
+      onClick={() => navigate('/my-orders')}
+      className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 flex items-center"
+    >
+      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+      </svg>
+      View My Orders
+    </button>
+  </div>
+</div>
 
         <div className="lg:grid lg:grid-cols-12 lg:gap-8">
           {/* Cart Items */}
@@ -217,13 +243,27 @@ const Cart: React.FC = () => {
                   </p>
                 </div>
 
-                <button
+                {/* <button
                   onClick={() => navigate('/checkout', { state: { products, summary } })}
                   disabled={products.length === 0}
                   className="w-full mt-6 bg-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
                 >
                   Proceed to Checkout
-                </button>
+                </button> */}
+                <button
+  onClick={() => {
+    if (user) {  // Add this check
+      navigate('/checkout', { state: { products, summary } })
+    } else {
+      // If not logged in, redirect to login with return path
+      navigate('/login', { state: { from: '/cart' } })
+    }
+  }}
+  disabled={products.length === 0}
+  className="w-full mt-6 bg-blue-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+>
+  {user ? 'Proceed to Checkout' : 'Login to Checkout'}
+</button>
               </div>
             </div>
           </div>

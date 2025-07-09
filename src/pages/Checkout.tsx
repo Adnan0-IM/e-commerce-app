@@ -236,7 +236,8 @@ const Checkout: React.FC = () => {
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString()
       };
-
+      
+      localStorage.setItem('userEmail', form.email);
       // Save order to localStorage
       const existingOrders = localStorage.getItem('orders');
       const orders = existingOrders ? JSON.parse(existingOrders) : [];

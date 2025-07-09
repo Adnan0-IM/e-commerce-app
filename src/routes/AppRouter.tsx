@@ -14,16 +14,20 @@ import Product from "../pages/Product";
 import NotFound from "../pages/NotFound";
 import Confirmation from "../pages/Confirmation";
 import Signup from "../pages/Signup";
+import MyOrders from "../pages/MyOrders";
+
 
 
 const AppRouter: React.FC = () => (
   <Routes>
+    
     {/* Public Routes */}
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
       <Route path="/products" element={<Product />} />
       <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/my-orders" element={<MyOrders />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       
