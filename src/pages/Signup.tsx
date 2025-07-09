@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import AuthLayout from "../components/AuthLayout";
 
 const Signup: React.FC = () => {
@@ -7,6 +7,10 @@ const Signup: React.FC = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Get redirect path from location state, if available
+  const from = location.state?.from || "/";
 
   const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,8 +28,10 @@ const Signup: React.FC = () => {
     users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
     setError("");
-    alert("Signup successful! Please login.");
-    navigate("/login");
+  
+    // Pass the "from" state to login page
+    navigate("/login", { state: { from } });
+   
   };
 
   return (

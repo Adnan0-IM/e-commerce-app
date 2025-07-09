@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import AuthLayout from "../components/AuthLayout";
 
@@ -9,13 +9,21 @@ const Login: React.FC = () => {
   const [error, setError] = useState("");
   const { login, isAuthenticated, isAdmin } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
-  // If already logged in, redirect away from login page
+  // Get redirect path from location state, if available
+  const from = location.state?.from || "/";
+
+  // If already logged in, redirect based on context
   React.useEffect(() => {
     if (isAuthenticated) {
-      navigate(isAdmin ? "/admin" : "/", { replace: true });
+      if (isAdmin) {
+        navigate("/admin", { replace: true });
+      } else {
+        navigate(from, { replace: true });
+      }
     }
-  }, [isAuthenticated, isAdmin, navigate]);
+  }, [isAuthenticated, isAdmin, navigate, from]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -4,6 +4,7 @@ import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import AppRouter from './routes/AppRouter';
+import RouteToTop from './components/RouteToTop';
 
 // Add a wrapper to apply the dark class to <html> based on theme
 const ThemeWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -27,6 +28,7 @@ function App() {
         <Router>
           <AuthProvider>
             <CartProvider>
+              <RouteToTop/>
               <AppRouter />
             </CartProvider>
           </AuthProvider>
