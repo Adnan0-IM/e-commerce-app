@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import ProductDetails from "../pages/ProductDetails";
 import Cart from "../pages/Cart";
-import Checkout from "../pages/Checkout";
 import Login from "../pages/Login";
 import AdminDashboard from "../pages/AdminDashboard";
 import ManageProducts from "../pages/ManageProducts";
@@ -31,15 +30,7 @@ const AppRouter: React.FC = () => (
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       
-      {/* Protected Customer Route */}
-      <Route
-        path="/checkout"
-        element={
-          <PrivateRoute>
-            <Checkout />
-          </PrivateRoute>
-        }
-      />
+    
       <Route path="/confirmation" element={<Confirmation />} />
       {/* Admin Routes (Protected) */}
       <Route
